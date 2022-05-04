@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="26456dc2-aa10-4470-8571-e47ef35c1ddb" name="Changes" comment="Initial commit" />
+    <list default="true" id="26456dc2-aa10-4470-8571-e47ef35c1ddb" name="Changes" comment="Initial commit">
+      <change beforePath="$PROJECT_DIR$/tools/.~Training_bodylandmark.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/Training_bodylandmark.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/test.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/test_attention.ipynb" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,7 +37,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/OneDrive/Desktop/pyall.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
   </component>
   <component name="Push.Settings">
@@ -81,6 +86,7 @@
       <workItem from="1651657159033" duration="31000" />
       <workItem from="1651657192343" duration="207000" />
       <workItem from="1651657448909" duration="795000" />
+      <workItem from="1651666268987" duration="39000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1651653984309</created>
