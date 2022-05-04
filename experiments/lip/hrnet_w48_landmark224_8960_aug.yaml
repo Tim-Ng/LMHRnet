@@ -1,0 +1,148 @@
+CUDNN:
+  BENCHMARK: true
+  DETERMINISTIC: false
+  ENABLED: true
+GPUS: (0,1,2,3) 
+OUTPUT_DIR: 'models'
+LOG_DIR: 'log'
+WORKERS: 4
+PRINT_FREQ: 100
+
+DATASET:
+  DATASET: lip_landmark
+  ROOT: 'dataset/custlr/auged/'
+  TEST_SET: 'dataset/csv_file/test12lm.csv'
+  TRAIN_SET: 'dataset/csv_file/train12lm.csv'
+  VAL_SET: 'dataset/csv_file/val12lm.csv'
+  NUM_CLASSES: 12
+  NUM_CLASSES_BDLM : 0
+MODEL:
+  NAME: body_landmark
+  ALIGN_CORNERS: False
+  PRETRAINED: ''
+  EXTRA:
+    FINAL_CONV_KERNEL: 1
+    STAGE1:
+      NUM_MODULES: 1
+      NUM_BRANCHES: 1
+      BLOCK: BOTTLENECK
+      NUM_BLOCKS:
+      - 4
+      NUM_CHANNELS:
+      - 64
+      FUSE_METHOD: SUM
+    STAGE2:
+      NUM_MODULES: 1
+      NUM_BRANCHES: 2
+      BLOCK: BASIC
+      NUM_BLOCKS:
+      - 4
+      - 4
+      NUM_CHANNELS:
+      - 48
+      - 96
+      FUSE_METHOD: SUM
+    STAGE3:
+      NUM_MODULES: 2
+      NUM_BRANCHES: 3
+      BLOCK: BASIC
+      NUM_BLOCKS:
+      - 4
+      - 4
+      - 4
+      NUM_CHANNELS:
+      - 48
+      - 96
+      - 192
+      FUSE_METHOD: SUM
+    STAGE4:
+      NUM_MODULES: 1
+      NUM_BRANCHES: 4
+      BLOCK: BASIC
+      NUM_BLOCKS:
+      - 4
+      - 4
+      - 4
+      - 4
+      NUM_CHANNELS:
+      - 48
+      - 96
+      - 192
+      - 384
+      FUSE_METHOD: SUM
+    STAGE5:
+      NUM_MODULES: 0
+      NUM_BRANCHES: 0
+      BLOCK: BASIC
+      NUM_BLOCKS:
+      - 0
+      - 0
+      - 0
+      - 0
+      NUM_CHANNELS:
+      - 0
+      - 0
+      - 0
+      - 0
+      FUSE_METHOD: null 
+    LMLASTLAY:
+        FINAL_CONV_KERNEL : 0
+LOSS:
+  WEIGHT_LOSS_CATEGORY : 1
+  WEIGHT_LOSS_ATTR : 20
+  WEIGHT_LOSS_LM_POS : 100
+  USE_OHEM: false #not used
+  OHEMTHRES: 0.9 #not used
+  OHEMKEEP: 131072 #not used
+TRAIN:
+  IMAGE_SIZE:
+  - 224
+  - 224
+  BASE_SIZE: 224
+  BATCH_SIZE_PER_GPU: 10
+  SHUFFLE: true
+  BEGIN_EPOCH: 0
+  END_EPOCH: 150
+  RESUME: true
+  LR: 0.007
+  WD: 0.0005
+  MOMENTUM: 0.9
+  NESTEROV: false
+  FLIP: true
+  MULTI_SCALE: true
+  LEARNING_RATE_DECAY : 0.8
+  WEIGHT_LOSS_LM_POS : 10
+TEST:
+  IMAGE_SIZE:
+  - 224
+  - 224
+  BASE_SIZE: 224
+  BATCH_SIZE_PER_GPU: 16
+  NUM_SAMPLES: 2000
+  FLIP_TEST: false
+  MULTI_SCALE: false
+CONSTANT:
+    LM_TRAIN_USE : 'vis'
+    LM_EVAL_USE : 'vis'
+    lm2name : 
+    - 'L.Che' 
+    - 'R.Che' 
+    - 'Sho.A' 
+    - 'Sho.B' 
+    - 'Sho.C' 
+    - 'Sho.D' 
+    - 'Sho.E' 
+    - 'Arm.A' 
+    - 'Arm.B' 
+    - 'L.Wai' 
+    - 'R.Wai' 
+    - 'Arm.E'
+    IMAGE_SIZE:
+    - 224
+    - 224
+    RESIZE: 224
+    NAME_DIV8 : 'landmark_map28'
+    NAME_DIV4 : 'landmark_map56'
+    NAME_DIV2 : 'landmark_map112'
+    NAME_NODIV: 'landmark_map224'
+    SAVEFILE : 'pretrained models'
