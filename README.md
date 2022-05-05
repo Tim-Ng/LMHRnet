@@ -129,9 +129,9 @@ Please download the requirements from the requirement.txt file. Its a direct exp
 
 The .yaml files in the [experiment folder](/experiment) are the configuration file that will allow you to tweak the network as well as change where to aquire the training, validation and test datasets. <br>
 
-The .pkl files in the [pretrained models](/pretrained models) is where the train networks can be found. <br>
+The .pkl files in the [pretrained models](/pretrained&#32;models) is where the train networks can be found. <br>
 
-The graph for training is saved in [pretrained models/experiment layers graph](/pretrained models/experiment layers graph) <br>
+The graph for training is saved in [pretrained models/experiment layers graph](/pretrained&#32;models/experiment&#32;layers&#32;graph) <br>
 
 The files for the models are located in [/lib/models](/lib/models) <br>
 
