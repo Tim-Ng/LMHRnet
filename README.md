@@ -136,5 +136,5 @@ The files for the models are located in [/lib/models](/lib/models) <br>
 
 
 ## Train networks performance:
-
+![alt text](Results.png)
 
