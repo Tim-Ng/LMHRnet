@@ -1,7 +1,8 @@
 # Body Landmark Detection based on High-Resolution Network  
 Name      : Ng Yao Hong
 Student ID: 20107125
-This is the code for Body Landmark Detection based on High-Resolution Network an FYP project.
+This is the code for Body Landmark Detection based on High-Resolution Network an FYP project. 
+The git hub repo can be found using this [link](https://github.com/Tim-Ng/LMHRnet)
 
 ## Files
 ```
