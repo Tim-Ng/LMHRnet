@@ -11,7 +11,7 @@ PRINT_FREQ: 100
 DATASET:
   DATASET: lip_landmark
   ROOT: 'dataset/custlr/auged/'
-  TEST_SET: 'dataset/csv_file/test-1000-aug.cvs'
+  TEST_SET: 'dataset/csv_file/val-1000-aug.cvs'
   TRAIN_SET: 'dataset/csv_file/train-1000-aug.csv'
   VAL_SET: 'dataset/csv_file/val-1000-aug.csv'
   NUM_CLASSES: 12

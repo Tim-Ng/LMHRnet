@@ -13,9 +13,9 @@ from tqdm import tqdm
 import time
 import timeit
 from pathlib import Path
-
+import random
 import numpy as np
-
+from pathlib import Path
 import torch
 import torch.nn as nn
 import torch.backends.cudnn as cudnn
@@ -34,7 +34,9 @@ from torch.utils.data import DataLoader
 import pandas as pd
 os.chdir("../")
             
-def testing(cfg,pretrain_model,disply_result=True,other_testfile= None):
+def testing(cfg,pretrain_model,disply_result=True,other_testfile= None,set_seed= False):
+    if set_seed:
+        random.seed(20107125)
     update_config(config, cfg)
     device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
     if other_testfile is None:
@@ -83,14 +85,14 @@ def testing(cfg,pretrain_model,disply_result=True,other_testfile= None):
                 dataset.plot_sample(i)
                  # body landmarks
                 plt.scatter(output['lm_pos_output'][0,:,0]*224,output['lm_pos_output'][0,:,1]*224, s=5, color='red')
-                predname = 'pred_visualized/gt/test/'+'img'+str(i)+'.jpg'
-                # plt.savefig(predname)
+                predname = 'pred_visualized/gt/test/'+Path(pretrain_model).stem+'_img'+str(i)+'.jpg'
+                #plt.savefig(predname)
                 plt.show()
 
                 landmark_map = np.max(output['lm_pos_map'][0].cpu().numpy(), axis=0)
                 plt.imshow(landmark_map)
-                predname = 'pred_visualized/alt/v3_mine-v-gdrive/'+'hm'+str(i)+'.jpg'
-                # plt.savefig(predname)
+                predname = 'pred_visualized/alt/v3_mine-v-gdrive/'+Path(pretrain_model).stem+'_hm'+str(i)+'.jpg'
+                #plt.savefig(predname)
 
         ret = evaluator.evaluate()
         val_pos_loss.append(ret['lm_dist'])
@@ -99,7 +101,9 @@ def testing(cfg,pretrain_model,disply_result=True,other_testfile= None):
     print(ret['lm_individual_dist'])
 
     
-def testing_scratch(cfg,pretrain_model,disply_result=True,other_testfile= None):
+def testing_scratch(cfg,pretrain_model,disply_result=True,other_testfile=None, set_seed= False):
+    if set_seed:
+        random.seed(20107125)
     update_config(config, cfg)
     device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
     if other_testfile is None:
@@ -148,14 +152,14 @@ def testing_scratch(cfg,pretrain_model,disply_result=True,other_testfile= None):
                 dataset.plot_sample(i)
                  # body landmarks
                 plt.scatter(output['lm_pos_output'][0,:,0]*224,output['lm_pos_output'][0,:,1]*224, s=5, color='red')
-                predname = 'pred_visualized/gt/test/'+'img'+str(i)+'.jpg'
-                # plt.savefig(predname)
+                predname = 'pred_visualized/gt/test/'+Path(pretrain_model).stem+'_img'+str(i)+'.jpg'
+                #plt.savefig(predname)
                 plt.show()
 
                 landmark_map = np.max(output['lm_pos_map'][0].cpu().numpy(), axis=0)
                 plt.imshow(landmark_map)
-                predname = 'pred_visualized/alt/v3_mine-v-gdrive/'+'hm'+str(i)+'.jpg'
-                # plt.savefig(predname)
+                predname = 'pred_visualized/alt/v3_mine-v-gdrive/'+Path(pretrain_model).stem+'_hm'+str(i)+'.jpg'
+                #plt.savefig(predname)
 
         ret = evaluator.evaluate()
         val_pos_loss.append(ret['lm_dist'])
